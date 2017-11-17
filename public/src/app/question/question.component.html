@@ -1,0 +1,18 @@
+<a [routerLink]="['/dashboard']">Home</a>
+<a [routerLink]="['/answer',question._id]">Answer this question</a>
+<a [routerLink]="['']">Logout</a>
+
+
+<h1>{{currentQuestion.text}}</h1>
+<h3>{{currentQuestion.desc}}</h3>
+
+<div *ngFor='let answer of currentQuestion.answers'>
+  <p [ngStyle]="{'font-weight': 'bold'}"></p>{{answer.text}}
+  <p>{{answer.details}}</p>
+  <p>Likes: {{answer.likes}}</p> 
+  <p><button (click)="like(answer._id)">Like</button></p>
+
+  
+  
+</div>
+

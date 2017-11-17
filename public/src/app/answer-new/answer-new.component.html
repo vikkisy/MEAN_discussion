@@ -1,0 +1,35 @@
+<a [routerLink]="['/dashboard']">Home</a> 
+<a href="">Go to question</a>
+<a href="">Logout</a>
+
+<h1>{{currentQuestion.text }}</h1>
+<h3>{{currentQuestion.desc }}</h3>
+
+<form (submit)="submitAnswer()" #formData='ngForm'>
+
+  <table>
+    <tr>
+      <td>Your Answer: </td>
+      <td>
+        <textarea cols="30" rows="10" 
+                  name="text" 
+                  required minlength="5" 
+                  [(ngModel)]="newAnswer.text" 
+                  #text="ngModel"></textarea>
+        <span *ngIf="text.invalid && text.dirty">Please enter answer that's at least 5 characters</span>
+      </td>
+    </tr>
+    <tr>
+      <td>Supporting Details to Answer
+        <p>(Optional)</p>
+      </td>
+      <td>
+        <textarea cols="30" rows="10" name="desc" [(ngModel)]="newAnswer.details" #details="ngModel"></textarea>
+      </td>
+    </tr>
+  </table>
+  <button [routerLink]="['dashboard']">Cancel</button>
+
+  <input type="submit" value="Submit" [disabled]='!formData.valid'>
+
+</form>
