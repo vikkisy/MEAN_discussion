@@ -1,25 +1,31 @@
-<h1>Hi {{currentUser.name}}</h1> 
-<a [routerLink]="['']">Logout</a>
+<div class="wrapper">
+    <div class="header">
+      <h1 class="style1">Hello {{currentUser.name}} !</h1>
+        <a [routerLink]="['/question','new']">ADD A QUESTION</a> | 
+        <a [routerLink]="['']">LOGOUT</a> 
+        
 
-<a [routerLink]="['/question','new']">Add a question</a>
+        <!-- <input type="text" name="" id="" placeholder="Search Questions"> -->
+        <!-- <input type="submit" value="Search"> -->
+        <!-- <input type="text" name="searchString" [(ngModel)]="searchString" (keyup)="searchQuestions()"> -->
+        
+<!-- 
+      <div class="right"> -->
+      
+      <!-- </div> -->
+    </div>
+    <div class="content">
+        <div *ngFor='let question of allQuestions' class="contentQuestion">
+          <p><span class="style1">Question:</span>
+          {{question.text}}</p>
+          <p><span class="style1">Answers: </span> {{question.answers.length}}</p>
+          <p [ngStyle]="{'font-style':'italic'}">Submitted By: {{question._user}}</p>
+          <p>
+            <a [routerLink]="['/question',question._id]">Show Question Details</a> |
+            <a [routerLink]="['/answer',question._id]">Answer Question</a>
+          </p>
+        </div>
+    </div>
 
 
-<p>search notes:
-<input type="text" name="" id="">
-<!-- <input type="text" name="searchString" #searchString='ngModel' [(ngModel)]="searchString" (keyup)="searchNotes()"> -->
-</p>
-
-<table>
-  <thead>
-    <th>Question</th>
-    <th>Answers</th>
-    <th>Action</th>
-  </thead>
-  <tbody>
-    <tr *ngFor='let question of allQuestions'>
-      <td>{{question.text}}</td>
-      <td>{{question.answers.length}}</td>
-      <td><a [routerLink]="['/question',question._id]">Show</a> <a [routerLink]="['/answer',question._id]">Answer</a></td>
-    </tr>
-  </tbody>
-</table>
+</div>

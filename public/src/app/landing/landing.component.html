@@ -1,12 +1,17 @@
+<div class="container">
+      <h1>Discussion Board</h1>
 
-<h2>Q & A</h2>
-<form (submit)="onSubmit()">
-  Name: 
-  <input type="text" 
-         name="name"
-         required
-         [(ngModel)]="user.name"
-         #name="ngModel">
-  <p *ngIf="name.invalid && name.dirty">Please enter a name</p>
-  <input type="submit" value="Enter">
-</form>
+        <div id="msg">
+             What
+            <div id="magic"></div>
+        </div>
+           
+
+      <form (submit)="onSubmit()">
+        
+        <input type="text" placeholder="Enter Name To Discuss" name="name" required [(ngModel)]="user.name" #name="ngModel">
+        <p *ngIf="name.invalid && name.dirty">Please enter a name</p>
+        <input type="submit" value="Enter">
+      </form>
+      
+</div>

@@ -1,9 +1,15 @@
-<a [routerLink]="['/dashboard']">Home</a> 
-<a href="">Go to question</a>
-<a href="">Logout</a>
 
-<h1>{{currentQuestion.text }}</h1>
-<h3>{{currentQuestion.desc }}</h3>
+    
+
+
+<div class="wrapper">
+  <a [routerLink]="['/dashboard']">HOME</a> |
+  <a [routerLink]="['/question',currentQuestion._id]">RETURN TO QUESTION</a> |
+  <a [routerLink]="['']">LOGOUT</a>
+    <div class="header">
+        <h1>{{currentQuestion.text }}</h1>
+        <p>{{currentQuestion.desc }}</p>
+    </div>
 
 <form (submit)="submitAnswer()" #formData='ngForm'>
 
@@ -11,7 +17,7 @@
     <tr>
       <td>Your Answer: </td>
       <td>
-        <textarea cols="30" rows="10" 
+        <textarea cols="30" rows="5" 
                   name="text" 
                   required minlength="5" 
                   [(ngModel)]="newAnswer.text" 
@@ -20,16 +26,23 @@
       </td>
     </tr>
     <tr>
-      <td>Supporting Details to Answer
+      <td>Supporting Details to Answer: 
         <p>(Optional)</p>
       </td>
       <td>
-        <textarea cols="30" rows="10" name="desc" [(ngModel)]="newAnswer.details" #details="ngModel"></textarea>
+        <textarea cols="30" rows="3" name="desc" [(ngModel)]="newAnswer.details" #details="ngModel"></textarea>
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>
+        <button [routerLink]="['dashboard']">Cancel</button>
+        
+        <input type="submit" value="Submit" [disabled]='!formData.valid'>
       </td>
     </tr>
   </table>
-  <button [routerLink]="['dashboard']">Cancel</button>
-
-  <input type="submit" value="Submit" [disabled]='!formData.valid'>
+  
 
 </form>
+</div>

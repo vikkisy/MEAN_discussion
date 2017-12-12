@@ -9,7 +9,7 @@ import { ApiService } from '../api.service';
 })
 export class DashboardComponent implements OnInit {
   currentUser: object = { name: "" };
-  allQuestions: object[] = [];
+  allQuestions: object;
   searchString: string;
  
   constructor(private _apiService: ApiService) { }
@@ -27,7 +27,8 @@ export class DashboardComponent implements OnInit {
 
     this._apiService.getQuestions()
     .then((data) => {
-      console.log("got questions")
+      console.log("got questions", data)
+
       this.allQuestions = data;
     })
     .catch((error) => {
@@ -35,10 +36,13 @@ export class DashboardComponent implements OnInit {
     })
   }
 
-  searchQuestions(){
-    this.allQuestions = this.allQuestions.filter((str) => {
-      //nooo timeeee
-    })
-  }
+  // searchQuestions(){
+  //   console.log("click", this.searchString);
+  //   console.log(this.allQuestions);
+  //   this.allQuestions.filter((searchStr) => {
+  //     console.log(searchStr.includes(searchStr));
+  //     return searchStr.includes(searchStr);
+  //   })
+  // }
 
 }

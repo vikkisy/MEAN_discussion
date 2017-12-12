@@ -21,10 +21,10 @@ export class ApiService {
     .map(Response => Response.json()).toPromise();
   }
 
-  createQuestion(questObj) {
+  createQuestion(questObj, id) {
     console.log("came into create question");
     console.log(questObj);
-    return this._http.post('/api/question', questObj)
+    return this._http.post('/api/question/'+id, questObj)
       .map(Response => Response.json()).toPromise();
   }
 

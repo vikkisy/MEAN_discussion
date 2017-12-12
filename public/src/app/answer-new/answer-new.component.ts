@@ -12,7 +12,8 @@ import { ActivatedRoute } from '@angular/router';
 export class AnswerNewComponent implements OnInit {
   newAnswer: object = {
     text: "",
-    details: ""
+    details: "",
+    likes: 0
   }
   thisQiD: string;
   currentQuestion: object;

@@ -5,7 +5,7 @@ module.exports = {
 
     like: (req,res) => {
         console.log("inside like")
-        Answer.update({_id: req.params.id}, {likes: likes++}, (err) => {
+        Answer.update({_id: req.params.id}, { $inc: {likes: 1}}, (err) => {
             if(err){
                 console.log("error liking")
             } else {

@@ -1,0 +1,23 @@
+.container {
+    margin-top: 200px;
+    text-align: center;
+}
+h1 {
+    font-family: 'Archivo Black', sans-serif;
+}
+#msg {
+    font-size: 18px;
+    margin: 25px;
+    font-family: 'Archivo Narrow', sans-serif;
+}
+#magic{
+    color: #777;
+    border-right: 1px solid #777;
+    padding-right: 7px;
+    display: inline;
+    font-size: 18px;
+}
+input {
+    text-align: center;
+    font-family: 'Khula', sans-serif;
+}

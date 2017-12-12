@@ -1,38 +1,48 @@
-<a [routerLink]="['dashboard']">Home</a>
-<a href="">Logout</a>***
+<div class="wrapper">
 
-<h1>New Question</h1>
+     <div class="header">
+      <a [routerLink]="['/dashboard']">HOME</a> | 
+      <a [routerLink]="['']">LOGOUT</a>
 
-<form (submit)="submitQuestion()" #formData='ngForm'>
+      <h1>Add A New Question</h1>
+      </div>
 
-  <table>
-    <tr>
-      <td>Question</td>
-      <td>
-              <textarea cols="30" rows="10"
-                        name="text"
-                        required
-                        minlength="10"
-                        [(ngModel)]="newQuestion.text"
-                        #text="ngModel"
+      <form (submit)="submitQuestion(currentUser._id)" #formData='ngForm'>
+
+        <table class="content">
+          <tr>
+            <td>Question</td>
+            <td>
+                    <textarea cols="30" rows="5"
+                              name="text"
+                              required
+                              minlength="10"
+                              [(ngModel)]="newQuestion.text"
+                              #text="ngModel"
+                    ></textarea>
+                    <span *ngIf="text.invalid && text.dirty">Please enter question at least 10 characters</span>
+            </td>
+          </tr>
+          <tr>
+            <td>Description 
+              <p>(Optional)</p>
+            </td>
+            <td>
+              <textarea cols="30" rows="5"
+                        name="desc"
+                        [(ngModel)]="newQuestion.desc"
+                        #desc="ngModel"
               ></textarea>
-              <span *ngIf="text.invalid && text.dirty">Please enter question at least 10 characters</span>
-      </td>
-    </tr>
-    <tr>
-      <td>Description 
-        <p>(Optional)</p>
-      </td>
-      <td>
-        <textarea cols="30" rows="10"
-                  name="desc"
-                  [(ngModel)]="newQuestion.desc"
-                  #desc="ngModel"
-        ></textarea>
-      </td>
-    </tr>
-  </table>
-  <button [routerLink]="['dashboard']">Cancel</button>
-  <input type="submit" value="Submit" [disabled]='!formData.valid'>
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><button [routerLink]="['dashboard']">Cancel</button>
+            <input type="submit" value="Submit" [disabled]='!formData.valid'></td>
+          </tr>
+        </table>
+        
 
-</form>
+      </form>
+
+</div>

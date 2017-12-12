@@ -1,22 +1,33 @@
 var mongoose = require('mongoose');
 var Question = mongoose.model('Question');
 var Answer = mongoose.model('Answer');
+var User = mongoose.model('User');
 
 module.exports = {
 
     create: (req, res) => {
         console.log("came into create question");
         console.log(req.body);
-        var newQuest = new Question(req.body);
-        newQuest.save((err, savedQuest) => {
-            if(err){
-                console.log("error saving new question");
-                res.json(err);
-            } else {
-                console.log("successfully saved new question");
-                res.json(savedQuest);
-            }
+        User.findOne({_id: req.params.id}, (err, user) => {
+            var newQuest = new Question(req.body);
+            console.log(user);
+            newQuest._user = user.name;
+            newQuest.save((err) => {
+                user.questions.push(newQuest);
+                user.save((err) => {
+                    if (err) {
+                        console.log("error saving new question");
+                        res.json(err);
+                    } else {
+                        console.log("successfully saved new question");
+                        res.json(newQuest);
+                    }
+                })
+                
+            })
+
         })
+        
     },
 
     allQuestions: (req,res) => {

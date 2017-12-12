@@ -1,0 +1,22 @@
+.wrapper {
+    margin: 25px 50px 50px 50px;
+}
+.header {
+    background-color: black;
+    color: white;
+    padding: 15px;
+    font-family: 'Archivo Black', sans-serif;
+    margin-bottom: 25px;
+}
+.header a{
+  color: white;
+  text-decoration: underline;
+}
+
+td {
+    vertical-align: top;
+}
+
+td:nth-child(1) {
+    padding-right: 15px; 
+}

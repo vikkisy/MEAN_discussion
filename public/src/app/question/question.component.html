@@ -1,18 +1,33 @@
-<a [routerLink]="['/dashboard']">Home</a>
-<a [routerLink]="['/answer',question._id]">Answer this question</a>
-<a [routerLink]="['']">Logout</a>
-
-
-<h1>{{currentQuestion.text}}</h1>
-<h3>{{currentQuestion.desc}}</h3>
-
-<div *ngFor='let answer of currentQuestion.answers'>
-  <p [ngStyle]="{'font-weight': 'bold'}"></p>{{answer.text}}
-  <p>{{answer.details}}</p>
-  <p>Likes: {{answer.likes}}</p> 
-  <p><button (click)="like(answer._id)">Like</button></p>
-
+<div class="container">
   
-  
+    <a [routerLink]="['/dashboard']">HOME</a> |
+    <a [routerLink]="['']">LOGOUT</a>
+
+    <div class="top">
+      <h1>{{currentQuestion.text}}</h1>
+      <h4>{{currentQuestion.desc}}</h4>
+      <p>Submitted By: {{currentQuestion._user}}</p>
+      <a [routerLink]="['/answer',currentQuestion._id]">Answer this question</a>
+    </div>
+
+    
+
+    <table class="answers">
+    <tr [ngStyle]="{'border': '5px solid black'}" *ngFor='let answer of currentQuestion.answers' >
+      <td>
+        <span [ngStyle]="{'font-weight': 'bold'}">{{answer.text}}</span>
+        <p>{{answer.details}}</p>
+      </td>
+      <td>
+         Likes: {{answer.likes}}
+      </td>
+      <td>
+        <button (click)="like(answer._id)"> Like</button>
+      </td>
+      
+    </tr>
+    </table>
+    
+
 </div>
 

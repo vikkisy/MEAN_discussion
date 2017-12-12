@@ -4,6 +4,7 @@ var Schema = mongoose.Schema;
 var AnswerSchema = new mongoose.Schema({
     // since this is a reference to a different document, the _ is the naming convention!
     _question: { type: Schema.Types.ObjectId, ref: 'Question' },
+    _user: { type: Schema.Types.String, ref: 'User' },
     text: { type: String, required: true },
     details: { type: String},
     likes: {type: Number}

@@ -37,6 +37,15 @@ export class QuestionComponent implements OnInit {
     this._apiService.likeAnswer(aid)
       .then((data) => {
         console.log("liked answer", data);
+        this._apiService.currentQuestion(this.thisQiD)
+          .then((data) => {
+            console.log("found question", data);
+            this.currentQuestion = data;
+          })
+          .catch((error) => {
+            console.log(error);
+          })
+
       })
       .catch((error) => {
         console.log(error);
